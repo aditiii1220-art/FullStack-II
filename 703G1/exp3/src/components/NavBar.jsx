@@ -1,14 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from "react";
+import { NavLink } from "react-router";
+
 function NavBar() {
   return (
-      <div>
-          <h4>Student Management System | </h4>
-          <Link to="/">Home |</Link>
-          <Link to="/dashboard">Dashboard |</Link>
-          <Link to="/login">Login</Link>        
-    </div>
-  )
+    <header className="navbar">
+      <div className="brand">Student Portal</div>
+      <nav className="nav-links">
+        <NavLink
+          className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+          to="/"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+          to="/dashboard"
+        >
+          Dashboard
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+          to="/login"
+        >
+          Login
+        </NavLink>
+      </nav>
+    </header>
+  );
 }
 
-export default NavBar
+export default NavBar;
