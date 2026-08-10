@@ -1,45 +1,27 @@
-import { useState, useEffect } from "react"
+import NavBar from "./components/NavBar";
+import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import StudentList from "./pages/StudentList";
+import StudentProfile from "./pages/StudentProfile";
 function App() {
-  const [users, setUsers] = useState([])
-  const [error, setError] = useState(false);
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-
-
-  useEffect(() => {
-    async function fetchUsers() {
-      try {
-        setLoading(true);
-        const response = await fetch("https://jsonplaceholder.typicode.com/users");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setUsers(data);
-        setLoading(false);
-      } catch (error) {
-        setError(true);
-        setMessage(error.message);
-        setLoading(false);
-      }  
-    } 
-    fetchUsers();
-  }, [])
   return (
     <>
-      {error && <h4>{message}</h4>}
-      {loading && <h4>Loading...</h4>}
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="students" element={<StudentList />} />
+          <Route path="studentprofile" element={<StudentProfile />} />
+        </Route>
 
-      {users.map((user, index) => (
-        <div key={index}>
-          <h3>{user.name}</h3>
-          <h6>{user.address.city}</h6>
-          <p>{user.address.geo.lat}</p>
-          <p>{user.address.geo.lng}</p>
-        </div>
-      ))}
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
