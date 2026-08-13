@@ -10,6 +10,7 @@ function Dashboard() {
     
       <Link to="studentlist">Student List</Link>
       <Outlet />
+      <hr/>
     </div>
   )
 }

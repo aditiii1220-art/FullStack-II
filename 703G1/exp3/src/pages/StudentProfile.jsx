@@ -28,7 +28,6 @@ function StudentProfile() {
           Back to list
         </Link>
       </div>
-
       <div className="profile-layout">
         <div className="profile-summary">
           <div className="avatar large">{student.name.charAt(0)}</div>
@@ -41,7 +40,6 @@ function StudentProfile() {
             <span className="grade-pill">Grade {student.grade}</span>
           </div>
         </div>
-
         <div className="profile-details">
           <div className="detail-list">
             <div className="detail-item">

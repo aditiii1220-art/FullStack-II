@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 
 function Login() {
+  const [isloggedIn, setIsLoggedIn] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,6 +18,10 @@ function Login() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(formData);
+    if (formData.email === "admin@gmail.com" && formData.password === "admin123") {
+      setIsLoggedIn(true);
+      localStorage.setItem("isLoggedIn", "true");
+    }
   }
 
   return (

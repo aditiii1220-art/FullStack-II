@@ -14,7 +14,6 @@ function StudentList() {
           Back to dashboard
         </Link>
       </div>
-
       <div className="student-grid">
         {students.map((student) => (
           <article className="student-card" key={student.id}>
@@ -25,7 +24,6 @@ function StudentList() {
                 <p>{student.course}</p>
               </div>
             </div>
-
             <p className="student-meta">
               Age: {student.age} • {student.city}
             </p>
